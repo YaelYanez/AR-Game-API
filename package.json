@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "dev": "nodemon dist/app.js",
-    "build": "NODE_ENV=production node dist/app.js",
+    "build": "tsc && NODE_ENV=production pm2 start dist/app.js",
+    "stop": "pm2 delete app",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
@@ -20,6 +21,7 @@
     "express": "^4.17.1",
     "mongoose": "^5.9.19",
     "nodemon": "^2.0.4",
+    "pm2": "^4.4.0",
     "typescript": "^3.9.5"
   },
   "dependencies": {
