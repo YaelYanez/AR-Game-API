@@ -1,12 +1,18 @@
 import mongoose, { Schema, model } from "mongoose";
-import moment, { MomentInput } from "moment";
+import moment, { duration } from "moment";
+
+type Point = { lat: Number; lng: Number };
 
 interface IGameRound extends mongoose.Document {
-  startTime?: String;
+  startTime?: Number;
   endTime?: String;
   gameDuration?: Number;
   score?: Number;
+  difficulty?: Number;
+  startLocation: Point;
+  enemiesPointsLocations: Point[];
   user: string;
+  getUpdate: Function;
 }
 
 const GameRoundSchema = new Schema({
@@ -16,7 +22,7 @@ const GameRoundSchema = new Schema({
   },
   endTime: {
     type: String,
-    default: moment(),
+    default: undefined,
   },
   gameDuration: {
     type: Number,
@@ -26,9 +32,21 @@ const GameRoundSchema = new Schema({
     type: Number,
     default: 0,
   },
+  difficulty: {
+    type: Number,
+    default: Math.floor(Math.random() * 3 + 1),
+  },
+  startLocation: {
+    type: Object,
+    required: true,
+  },
+  enemiesPointsLocations: {
+    type: Array,
+    required: true,
+  },
   user: {
     type: Schema.Types.ObjectId,
-    ref: "users",
+    ref: "User",
   },
 });
 
