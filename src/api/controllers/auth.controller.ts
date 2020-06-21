@@ -14,7 +14,7 @@ const login = async (req: Request, res: Response) => {
     if (!loggedUser?.authenticate(password))
       return res
         .status(404)
-        .json({ ok: false, msg: "Check username or password" });
+        .json({ success: false, msg: "Check username or password" });
 
     return res.status(201).json({
       success: true,

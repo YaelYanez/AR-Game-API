@@ -1,4 +1,4 @@
-import express from "express";
+import express, { Response, Request } from "express";
 import colors from "colors";
 import morgan from "morgan";
 import cors from "cors";
@@ -18,6 +18,12 @@ if (NODE_ENV === "development") app.use(morgan("dev"));
 connectDB();
 
 // Routes
+app.get("/", (res: Response, req: Request) => {
+  res
+    .status(403)
+    .json({ success: false, msg: "Sorry, you are not allow to access here." });
+});
+
 app.use("/api/v1/auth", AuthRoutes);
 app.use("/api/v1/gameRound", GameRoundRoutes);
 
