@@ -21,7 +21,9 @@ connectDB();
 app.use("/api/v1/auth", AuthRoutes);
 app.use("/api/v1/gameRound", GameRoundRoutes);
 
-app.listen(PORT || 80, () => {
+console.log(NODE_ENV);
+
+app.listen(PORT || 3000, () => {
   console.log(
     colors.blue.bold(`Server running as ${NODE_ENV} on port: ${PORT}`)
   );
