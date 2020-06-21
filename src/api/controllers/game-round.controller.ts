@@ -34,7 +34,7 @@ export const startGame = async (req: Request, res: Response) => {
         gameId: startedGame._id,
         gameOptions: {
           difficulty: startedGame.difficulty,
-          enemiesPointLocations: startedGame.enemiesPointsLocations,
+          enemiesPointsLocations: startedGame.enemiesPointsLocations,
         },
       });
     } else {
@@ -46,7 +46,7 @@ export const startGame = async (req: Request, res: Response) => {
   } catch (error) {
     return res.status(500).json({
       success: false,
-      error,
+      error: "Server error, try again latter",
     });
   }
 };
