@@ -16,7 +16,7 @@ const login = async (req: Request, res: Response) => {
         .status(404)
         .json({ ok: false, msg: "Check username or password" });
 
-    return res.status(200).json({
+    return res.status(201).json({
       success: true,
       loggedUserId: loggedUser._id,
     });

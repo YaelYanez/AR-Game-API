@@ -5,8 +5,10 @@ export interface IUser extends mongoose.Document {
   name: string;
   email: string;
   password: string;
+  highestScore: Number;
   hashPassword: Function;
   authenticate: Function;
+  isPlaying: Boolean;
 }
 
 const UserSchema = new Schema({
@@ -28,6 +30,10 @@ const UserSchema = new Schema({
   highestScore: {
     type: Number,
     default: 0,
+  },
+  isPlaying: {
+    type: Boolean,
+    default: false,
   },
   createAt: {
     type: Date,
