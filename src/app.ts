@@ -5,7 +5,7 @@ import cors from "cors";
 import { connectDB } from "./config/db.config";
 import { AuthRoutes } from "./api/routes/auth.route";
 import { GameRoundRoutes } from "./api/routes/game-round.route";
-import { NODE_ENV, PORT } from "./config/env.config";
+import { NODE_ENV, PORT, MONGO_URI } from "./config/env.config";
 
 const app = express();
 
@@ -21,7 +21,7 @@ connectDB();
 app.use("/api/v1/auth", AuthRoutes);
 app.use("/api/v1/gameRound", GameRoundRoutes);
 
-console.log(NODE_ENV);
+console.log(MONGO_URI);
 
 app.listen(PORT || 3000, () => {
   console.log(
