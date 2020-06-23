@@ -4,6 +4,7 @@ import morgan from "morgan";
 import cors from "cors";
 import { connectDB } from "./config/db.config";
 import { AuthRoutes } from "./api/routes/auth.route";
+import { usersRoutes } from "./api/routes/user.route";
 import { GameRoundRoutes } from "./api/routes/game-round.route";
 import { NODE_ENV, PORT } from "./config/env.config";
 
@@ -26,6 +27,7 @@ app.get("/", (res: Response, req: Request) => {
 
 app.use("/api/v1/auth", AuthRoutes);
 app.use("/api/v1/gameRound", GameRoundRoutes);
+app.use("/api/v1/users", usersRoutes);
 
 app.listen(PORT || 3000, () => {
   console.log(
